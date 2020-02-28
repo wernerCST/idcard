@@ -5,7 +5,15 @@ void main() => runApp(MaterialApp(
   home: IdCard(),
 ));
 
-class IdCard extends StatelessWidget {
+class IdCard extends StatefulWidget {
+  @override
+  _IdCardState createState() => _IdCardState();
+}
+
+class _IdCardState extends State<IdCard> {
+
+  int age = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,6 +23,15 @@ class IdCard extends StatelessWidget {
         centerTitle: true,
         backgroundColor: Colors.grey[900],
         elevation: 2.0,
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          setState(() {
+            age += 1;
+          });
+        },
+        child: Icon(Icons.add),
+        backgroundColor: Colors.grey[900],
       ),
       body: Padding(
         padding: EdgeInsets.fromLTRB(30, 40, 30, 0),
@@ -53,7 +70,7 @@ class IdCard extends StatelessWidget {
             SizedBox(height: 30,),
 
             Text(
-              'Mobile:',
+              'Age:',
               style: TextStyle(
                 color: Colors.grey,
                 letterSpacing: 2.0,
@@ -62,7 +79,7 @@ class IdCard extends StatelessWidget {
             ),
             SizedBox(height: 10,),
             Text(
-              '(438) 504 - 1142',
+              '$age',
               style: TextStyle(
                 color: Colors.yellow[600],
                 letterSpacing: 2.0,
@@ -94,6 +111,9 @@ class IdCard extends StatelessWidget {
     );
   }
 }
+
+
+
 
 
 
